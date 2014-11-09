@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AndroidChallenge</string>
+    <string name="hello_world">Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! </string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_edit">EditActivity</string>
+    <string name="edit_button_submit">Submit</string>
+    <string name="warning_task_not_saved">Task not saved</string>
+    <string name="warning_task_empty">Please type new task before submitting</string>
+    <string name="message_red">Color selected: RED</string>
+    <string name="message_orange">Color selected: ORANGE</string>
+    <string name="message_green">Color selected: GREEN</string>
+    <string name="message_blue">Color selected: BLUE</string>
+    <string name="message_purple">Color selected: PURPLE</string>
+
+</resources>
