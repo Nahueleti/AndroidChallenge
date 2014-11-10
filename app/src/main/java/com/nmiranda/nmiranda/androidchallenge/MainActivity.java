@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -20,7 +21,6 @@ public class MainActivity extends Activity {
     static final String TASK_COLOR = "Color";
     ListView mTasks;
     ImageButton mEdit;
-    List<String> mTaskText;
     CustomAdapter mAdapter;
     List<Task> mValues;
 
@@ -36,8 +36,18 @@ public class MainActivity extends Activity {
         mValues = datasource.getAllTasks();
         mAdapter = new CustomAdapter(this,mValues);
         mTasks = (ListView) findViewById(R.id.main_listview_tasks);
+        mTasks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Task task = mValues.get(i);
+                mAdapter.remove(task);
+                datasource.open();
+                datasource.deleteTask(task);
+                mAdapter.notifyDataSetChanged();
+                datasource.close();
+            }
+        });
         mTasks.setAdapter(mAdapter);
-        datasource.close();
 
         //prepare Edit button to lauch activity for result
         mEdit = (ImageButton) findViewById(R.id.main_imagebutton_edit);
@@ -48,6 +58,9 @@ public class MainActivity extends Activity {
                 startActivityForResult(intent, CREATE_NEW_TASK);
             }
         });
+
+
+        datasource.close();
 
     }
 

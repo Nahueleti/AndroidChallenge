@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -53,19 +52,10 @@ public class CustomAdapter extends ArrayAdapter<Task> {
                 break;
         }
 
-        //Set Delete button listener, deleting the selected task entry (notifyDataSetChanged() not working as expected)
         ImageButton buttonDelete = (ImageButton) theView.findViewById(R.id.main_listview_imagebutton_delete);
-        buttonDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TasksDataSource datasource = new TasksDataSource(getContext());
-                datasource.open();
-                datasource.deleteTask(note);
-                String message = "Task deleted";
-                Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
-                notifyDataSetChanged();
-            }
-        });
+        buttonDelete.setFocusable(false);
+
         return theView;
     }
+
 }
